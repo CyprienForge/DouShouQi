@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SAE2._01.Views.Pages.VictoryPage"
+             Title="VictoryPage"
+             BackgroundColor="#f3f5de">
+    
+    <ContentPage.Resources>
+        <Style TargetType="Label" x:Key="LabelEntry">
+            <Setter Property="Margin" Value="0,100,0,20"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+
+        <Style TargetType="Entry" x:Key="Entry">
+            <Setter Property="PlaceholderColor" Value="#231F20"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="TextColor" Value="#231F20"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="WidthRequest" Value="400"/>
+            <Setter Property="HeightRequest" Value="60"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="ClearButtonVisibility" Value="WhileEditing"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="TextEndGame">
+            <Setter Property="HeightRequest" Value="70"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="TextButton">
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+        <Style TargetType="Border" x:Key="CaseButton">
+            <Setter Property="WidthRequest" Value="100"/>
+            <Setter Property="HeightRequest" Value="100"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="StrokeThickness" Value="0"/>
+            <Setter Property="StrokeShape" Value="RoundRectangle 100"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="BoardButton">
+            <Setter Property="WidthRequest" Value="150"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+        <Style TargetType="Label" x:Key="VictoryText">
+            <Setter Property="TextColor" Value="#f3f5de"/>
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+
+
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="*, 2.5*, *">
+
+        <!-- Main Title -->
+        <Grid Grid.Row="0" 
+      ColumnDefinitions="auto, auto, *, auto, auto"
+      Margin="0, 0, 0, 40"
+      BackgroundColor="#231F20">
+
+            <Image Grid.Column="0"
+           Source="arbre2leftwhite.png"
+           WidthRequest="350"
+           Aspect="Fill"/>
+
+            <Image Grid.Column="2"
+           Source="doushouqiwhite.png"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"
+           WidthRequest="500"
+           MinimumWidthRequest="200"/>
+
+            <Image Grid.Column="4"
+           Source="arbre2rightwhite.png"
+           WidthRequest="350"
+           Aspect="Fill"/>
+
+        </Grid>
+        <!-- -->
+
+        <Grid Grid.Row="2"
+        ColumnDefinitions="2*, 3*, 2*, 3*, 2*"
+              BackgroundColor="#231F20">
+
+            <Image Grid.Column="0"
+                    VerticalOptions="End"
+                    HorizontalOptions="Start"
+                    Source="treeleft.png"/>
+
+            <Image Grid.Column="2"
+                         Source="dotwhite.png"
+                         WidthRequest="200"/>
+
+            <Image Grid.Column="2"
+                         Source="home.png"
+                         Style="{StaticResource TextButton}"
+                         WidthRequest="100"/>
+
+            <Border StrokeShape="RoundRectangle 100"
+                    Grid.Column="2"
+                    Style="{StaticResource CaseButton}"
+                         WidthRequest="150"
+                    HeightRequest="150">
+
+                <ImageButton x:Name="backButton"
+                         Clicked="BackHomeOnClicked"
+                             BackgroundColor="Transparent"  />
+            </Border>
+
+
+            <Image Grid.Column="4"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                Source="treeright.png"/>
+
+        </Grid>
+
+        <Grid Grid.Row="1"
+        ColumnDefinitions="*, 5*, *">
+
+            <Image Grid.Column="0" 
+                Source="chinese1.png"/>
+
+            <Image Grid.Column="2"
+                Source="chinese2.png"/>
+
+            <Grid Grid.Column="1"
+             RowDefinitions="*, 4*">
+
+                <Grid Grid.Row="0">
+
+                    <Image Style="{StaticResource ImageInk}"/>
+
+                    <Image Source="endgame.png" 
+                        Style="{StaticResource TextEndGame}"/>
+
+                </Grid>
+
+                <Grid Grid.Row="1"
+                      Margin="65"
+                      Background="#231F20"
+                      RowDefinitions="*, *">
+
+                    <Label Grid.Row="1"
+                           Style="{StaticResource VictoryText}"
+                           Text="Congratulations, you just won !"/>
+
+                    <Label Grid.Row="0"
+                           Style="{StaticResource VictoryText}"
+                           Text="{Binding WinnerPlayer}"/>
+
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+   
+
+</ContentPage>

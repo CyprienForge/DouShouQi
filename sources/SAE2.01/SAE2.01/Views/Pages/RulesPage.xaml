@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SAE2._01.Views.Pages.RulesPage"
+             Title="RulesPage"
+             BackgroundColor="#f3f5de">
+    
+    <ContentPage.Resources>
+        
+        <!-- Règles H1 -->
+        <Style TargetType="Label" x:Key="LabelReglesH1">
+            <Setter Property="FontSize" Value="Large"/>
+            <Setter Property="TextColor" Value="#282627"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/> 
+        </Style>
+
+        <!-- Règles H2 -->
+        <Style TargetType="Label" x:Key="LabelReglesH2">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="TextColor" Value="#282627"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        </Style>
+
+        <!-- Règles H3 -->
+        <Style TargetType="Label" x:Key="LabelReglesH3">
+            <Setter Property="FontSize" Value="Small"/>
+            <Setter Property="TextColor" Value="#282627"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="TextRules">
+            <Setter Property="HeightRequest" Value="70"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="*, 3*, .7*">
+
+        <!-- Main Title -->
+        <Grid Grid.Row="0" 
+          ColumnDefinitions="auto, *, auto">
+
+            <Image Grid.Column="0"
+                Source="arbre2left.png"
+                WidthRequest="350"
+                Aspect="Fill"/>
+
+            <Image Grid.Column="1"
+               Source="doushouqilogo.png"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               WidthRequest="500"
+               MinimumWidthRequest="200"/>
+
+            <Image Grid.Column="2"
+               Source="arbre2right.png"
+               WidthRequest="350"
+               Aspect="Fill"/>
+
+        </Grid>
+        <!-- -->
+
+        <Grid Grid.Row="1"
+          ColumnDefinitions="*, 5*, *">
+
+            <Image Grid.Column="0" 
+               Source="chinese1.png"/>
+
+            <Grid Grid.Column="1"
+              RowDefinitions="*, 4*">
+
+                <Grid Grid.Row="0">
+
+                    <Image Style="{StaticResource ImageInk}"/>
+
+                    <Image Source="rules.png" 
+                       Style="{StaticResource TextRules}"/>
+
+                </Grid>
+
+                <Grid Grid.Row="1"
+                            Margin="0, 20, 0, 0"
+                  ColumnDefinitions="*, 3*, *">
+
+                    <ScrollView Grid.Column="1">
+
+                        <VerticalStackLayout>
+
+                            <Label Style="{StaticResource LabelReglesH1}" Text="1) Objective of the Game:"/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="Occupy your opponent's den."/>
+                            <Label Style="{StaticResource LabelReglesH1}" Text="2) Game Materials:"/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="Each player has 8 animals, each with a unique combat value:"/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="    8 = Elephant            7 = Lion"/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="    6 = Tiger                   5 = Panther"/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="    4 = Wolf                    3 = Dog"/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="    2 = Cat                      1 = Rat"/>
+
+                            <Label Style="{StaticResource LabelReglesH1}" Text="3) Game Flow:"/>
+                            <Label Style="{StaticResource LabelReglesH2}" Text="    3.1) Animal Movement:"/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="On each turn, a player moves an animal one space horizontally or vertically, in either direction."/>
+                            <Label Style="{StaticResource LabelReglesH2}" Text="    3.2) Animal Interactions:"/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="An animal can attack another animal of equal or lesser strength and take its place."/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="The elephant cannot attack a rat, but the rat can attack the elephant."/>
+                            <Label Style="{StaticResource LabelReglesH2}" Text="    3.3) Trap Mechanics:"/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="Traps protect the camps and are unavoidable."/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="They do not retain animals once they are on them and do not disappear after being stepped on."/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="When an animal is on an opponent's trap, any animal can attack it regardless of combat constraints."/>
+
+                            <Label Style="{StaticResource LabelReglesH2}" Text="    3.4) Special Situations:"/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="The rat is the only animal that can move on water."/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="The rat can attack another rat in the water or upon exiting the water."/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="However, this does not work against elephants."/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="Only lions and tigers can jump from one bank to another, provided no rat is in their path."/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="They can also attack animals if they land on them."/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="The elephant cannot attack a rat, but the rat can attack the elephant."/>
+                            <Label Style="{StaticResource LabelReglesH2}" Text="    3.5) Player Camps:"/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="Any animal can enter the opponent's camp, but it is not allowed to block access to one's own camp with one of their animals."/>
+                            <Label Style="{StaticResource LabelReglesH2}" Text="    3.6) End of the Game:"/>
+                            <Label Style="{StaticResource LabelReglesH3}" Text="The game ends when an animal enters the opponent's camp or if there are no more animals to confront."/>
+
+                        </VerticalStackLayout>
+                    </ScrollView>
+
+                </Grid>
+
+            </Grid>
+
+
+            <Image Grid.Column="2"
+               Source="chinese2.png"/>
+
+        </Grid>
+
+        <Grid Grid.Row="2"
+              ColumnDefinitions="2*, 3*, 2*, 3*, 2*">
+
+            <Image
+               VerticalOptions="End"
+               HorizontalOptions="Start"
+               Source="arbretopleft.png"/>
+
+            <ImageButton Grid.Column="2" 
+                         Background="Transparent"
+                         Source="backarrow.png"
+                         Margin="0, 0, 0, 30"
+                         HeightRequest="70"
+                         VerticalOptions="End"
+                         HorizontalOptions="Center"
+                         x:Name="backbutton"
+                         Clicked="OnBackButtonClicked"/>
+
+            <Image Grid.Column="4"
+                   VerticalOptions="End"
+                   HorizontalOptions="End"
+                   Source="arbretopright.png"/>
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

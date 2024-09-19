@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Layouts="clr-namespace:SAE2._01.Layouts"
+             xmlns:conv="clr-namespace:SAE2._01.Resources.Converters"
+             xmlns:Essentials="clr-namespace:MyClassLibrary.Essentials;assembly=MyClassLibrary"
+             x:Class="SAE2._01.Views.Pages.BoardPage"
+             Title="BoardPage"
+             BackgroundColor="#f3f5de">
+
+    <ContentPage.Resources>
+        <conv:Ground2Image x:Key="ground2ImageConverter"/>
+        <conv:Animal2Image x:Key="animal2ImageConverter"/>
+        <conv:CurrentPlayerOne2Bool x:Key="currentPlayerOne2BoolConverter"/>
+        <conv:CurrentPlayerTwo2Bool x:Key="currentPlayerTwo2BoolConverter"/>
+
+        <ResourceDictionary>
+            <x:Double x:Key="VerticalSpacing">1</x:Double>
+            <x:Double x:Key="HorizontalSpacing">1</x:Double>
+            <DataTemplate x:Key="cellTemplate" x:DataType="Essentials:Case">
+                    <Border>
+                        <!-- Fond de la case -->
+                        <Grid>
+                            <Image Source="{Binding GroundType, Converter={StaticResource ground2ImageConverter}}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   Aspect="AspectFill"/>
+
+                            <Image Source="{Binding Inhabitant, Converter={StaticResource animal2ImageConverter}}"/>
+                            
+                            <Button AutomationId="{Binding Id}" 
+                                    Background="Transparent"
+                                    Opacity=".7"
+                                    Clicked="ButtonMove"/>
+                        </Grid>
+                    </Border>
+            </DataTemplate>
+        </ResourceDictionary>
+
+        <Style TargetType="Image" x:Key="TextBoard">
+            <Setter Property="HeightRequest" Value="70"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="BoardButton">
+            <Setter Property="WidthRequest" Value="150"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="TextButton">
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+
+        <Style TargetType="Border" x:Key="CaseButton">
+            <Setter Property="WidthRequest" Value="100"/>
+            <Setter Property="HeightRequest" Value="100"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="StrokeThickness" Value="0"/>
+            <Setter Property="StrokeShape" Value="RoundRectangle 100"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="*, 2.5*, *">
+
+        <!-- Ligne Milieu : Contenu -->
+        <Grid Grid.Row="1"
+                ColumnDefinitions="*, auto, *">
+
+            <Image Grid.Column="0" 
+                    Source="chinese1.png"/>
+
+            <Grid Grid.Column="1">
+
+                <Grid>
+                    <Border StrokeThickness="5">
+                        <Border.Stroke>
+                            <Color>#231f20</Color>
+                        </Border.Stroke>
+
+                        <!-- BackgroundColor : Fond des cases + Bordures -->
+                        <Layouts:BoardLayout x:Name="board"
+                            BindableLayout.ItemsSource="{Binding Matrix.FlatMatrix2d}"
+                            BindableLayout.ItemTemplate="{StaticResource cellTemplate}"
+                            NbColumns="{Binding Matrix.NbColumns}"
+                            NbRows="{Binding Matrix.NbRows}"
+                            HorizontalSpacing="{StaticResource HorizontalSpacing}"
+                            VerticalSpacing="{StaticResource VerticalSpacing}"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="Center" 
+                            VerticalOptions="Center"/>
+                    </Border>
+
+                    <Border StrokeShape="RoundRectangle 100"
+                                    StrokeThickness="0"
+                                    BackgroundColor="#f3f5de"
+                                    HeightRequest="50"
+                                    WidthRequest="50"
+                                    Opacity="1"
+                                    x:Name="circle"
+                                    IsVisible="False"/>
+                </Grid>
+
+            </Grid>
+
+            <Image Grid.Column="2"
+                    Source="chinese2.png"/>
+
+        </Grid>
+        <!-- -->
+
+        <!-- Ligne Bas -->
+        <Grid Grid.Row="2"
+              ColumnDefinitions="2*, 3*, 2*, 3*, 2*"
+              BackgroundColor="#231F20"
+              Margin="0, 40, 0, 0">
+
+            <Image Grid.Column="0"
+                   VerticalOptions="End"
+                   HorizontalOptions="Start"
+                   Source="treeleft.png"/>
+
+            <Image Grid.Column="1" 
+                   Style="{StaticResource ImageInk}"
+                   Source="encreop.png"
+                   x:Name="encreop1"
+                   Opacity="1"/>
+
+            <Label Grid.Column="1"
+                   Text="{Binding Player1.Name, StringFormat='{0}'}" 
+                   VerticalOptions="Center"
+                   Margin="0,0,0,10"
+                   HorizontalOptions="Center"
+                   TextColor="#1D33A7"
+                   FontSize="40"
+                   x:Name="nameplayer1"
+                   Opacity="1"/>
+
+            <Image Grid.Column="2" 
+                   Source="choosePawn.png"
+                   x:Name="choosepawn"
+                   WidthRequest="140"
+                   Style="{StaticResource TextButton}"
+                   Opacity="1"/>
+
+            <Image Grid.Column="2" 
+                   Source="chooseMovement.png"
+                   x:Name="choosemovement"
+                   WidthRequest="170"
+                   Style="{StaticResource TextButton}"
+                   Opacity="0"/>
+
+            <Image Grid.Column="3" 
+                   Style="{StaticResource ImageInk}"
+                   Source="encreop.png"
+                   x:Name="encreop2"
+                   Opacity="1"/>
+
+            <Label Grid.Column="3"
+                   Text="{Binding Player2.Name, StringFormat='{0}'}" 
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   TextColor="#A71D1D"
+                   Margin="0,0,0,10"
+                   FontSize="40"
+                   x:Name="nameplayer2"
+                   Opacity="1"/>
+
+            <Image Grid.Column="4"
+                   VerticalOptions="End"
+                   HorizontalOptions="End"
+                   Source="treeright.png"/> 
+
+        </Grid>
+        <!-- -->
+        
+        <!-- Main Title -->
+        <Grid Grid.Row="0" 
+              ColumnDefinitions="auto, auto, *, auto, auto"
+              Margin="0, 0, 0, 40"
+              BackgroundColor="#231F20">
+
+            <Image Grid.Column="0"
+                   Source="arbre2leftwhite.png"
+                   WidthRequest="350"
+                   Aspect="Fill"/>
+
+            <Image Grid.Column="2"
+                   Source="doushouqiwhite.png"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   WidthRequest="500"
+                   MinimumWidthRequest="200"/>
+
+            <Image Grid.Column="4"
+                   Source="arbre2rightwhite.png"
+                   WidthRequest="350"
+                   Aspect="Fill"/>
+
+        </Grid>
+        <!-- -->
+        
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SAE2._01.Views.Pages.Pregame"
+             Title="Pregame"
+             BackgroundColor="#f3f5de">
+
+    <ContentPage.Resources>
+        <Style TargetType="Label" x:Key="LabelEntry">
+            <Setter Property="Margin" Value="0,100,0,20"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+
+        <Style TargetType="Entry" x:Key="Entry">
+            <Setter Property="PlaceholderColor" Value="#231F20"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="TextColor" Value="#231F20"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="WidthRequest" Value="400"/>
+            <Setter Property="HeightRequest" Value="60"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="ClearButtonVisibility" Value="WhileEditing"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="TextPregame">
+            <Setter Property="HeightRequest" Value="70"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="*, 3*, *">
+        
+        <!-- Main Title -->
+        <Grid Grid.Row="0" 
+            ColumnDefinitions="auto, *, auto">
+
+            <Image Grid.Column="0"
+             Source="arbre2left.png"
+             WidthRequest="350"
+             Aspect="Fill"/>
+
+            <Image Grid.Column="1"
+            Source="doushouqilogo.png"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="500"
+            MinimumWidthRequest="200"/>
+
+            <Image Grid.Column="2"
+            Source="arbre2right.png"
+            WidthRequest="350"
+            Aspect="Fill"/>
+
+        </Grid>
+        <!-- -->
+
+        <Grid Grid.Row="2"
+            ColumnDefinitions="2*, 3*, 2*, 3*, 2*">
+
+            <Image Grid.Column="0"
+            VerticalOptions="End"
+            HorizontalOptions="Start"
+            Source="arbretopleft.png"/>
+
+            <ImageButton Grid.Column="2" 
+                  Background="Transparent"
+                  Source="backarrow.png"
+                  Margin="0, 0, 0, 30"
+                  HeightRequest="70"
+                  VerticalOptions="End"
+                  HorizontalOptions="Center"
+                  x:Name="backbutton"
+                  Clicked="OnBackButtonClicked"/>
+
+            <Image Grid.Column="4"
+                    VerticalOptions="End"
+                    HorizontalOptions="End"
+                    Source="arbretopright.png"/>
+
+        </Grid>
+
+        <Grid Grid.Row="1"
+            ColumnDefinitions="*, 5*, *">
+
+            <Image Grid.Column="0" 
+                    Source="chinese1.png"/>
+
+            <Image Grid.Column="2"
+                    Source="chinese2.png"/>
+            
+            <Grid Grid.Column="1"
+                 RowDefinitions="*, 4*">
+
+                <Grid Grid.Row="0">
+
+                    <Image Style="{StaticResource ImageInk}"/>
+
+                    <Image Source="createagame.png" 
+                            Style="{StaticResource TextPregame}"/>
+
+                </Grid>
+
+                <Grid Grid.Row="1"
+                      Margin="0, 65, 0, 0">
+
+                    <Grid Grid.Row="0"
+                          ColumnDefinitions="3*, *, 3*">
+
+                        <Grid Grid.Column="0"
+                              RowDefinitions="*, *, *"
+                                WidthRequest="500"
+                                BackgroundColor="#231F20">
+
+                            <Image Grid.Row="0"
+                                   HeightRequest="80"
+                                   Source="player1.png"/>
+
+                            <Image Grid.Row="1"
+                                   HeightRequest="80"
+                                   Source="encreop.png"
+                                   Margin="0,0,0,100"/>
+
+                            <Entry Grid.Row="1"
+                                   x:Name="Entry1" 
+                                   Text="{Binding Player1.Name}" 
+                                   Placeholder="Enter your name" 
+                                   Style="{StaticResource Entry}"
+                                   Margin="0,0,0,100"/>
+
+                            <Label Grid.Row="2"
+                                   HorizontalOptions="Center" 
+                                   Text="{Binding ErrorMessage}" 
+                                   TextColor="DarkRed"/>
+                            
+                        </Grid>
+
+                        <Grid Grid.Column="2"
+                              RowDefinitions="*, *, *"
+                                     WidthRequest="500"
+                                     BackgroundColor="#231F20">
+
+                            <Image Grid.Row="0"
+                                   HeightRequest="80"
+                                   Source="player2.png"/>
+
+                            <Image Grid.Row="1"
+                                   HeightRequest="80"
+                                   Source="encreop.png"
+                                   Margin="20,0,0,100"/>
+
+                            <Entry Grid.Row="1"
+                                   x:Name="Entry2" 
+                                   Text="{Binding Player2.Name}" 
+                                   Placeholder="Enter your name" 
+                                   Style="{StaticResource Entry}"
+                                   Margin="20,0,0,100"/>
+
+                            <Label Grid.Row="2" 
+                                   HorizontalOptions="Center" 
+                                   Text="{Binding ErrorMessage}"
+                                   TextColor="DarkRed"/>
+                            
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            
+                            <Image Source="dot.png"
+                                   x:Name="startImg"
+                                HeightRequest="225"/>
+
+                            <Image Source="start.png"
+                                   x:Name="startText"
+                                HeightRequest="70"/>
+
+                            <Border StrokeShape="RoundRectangle 100"
+                                    StrokeThickness="0"
+                                    BackgroundColor="#f3f5de"
+                                    HeightRequest="50"
+                                    WidthRequest="50"
+                                    Opacity=".5"
+                                    x:Name="circle"
+                                    IsVisible="False"/>
+
+                            <Button HeightRequest="180"
+                                WidthRequest="180"
+                                BackgroundColor="Transparent"
+                                Clicked="OnStartButtonClicked"/>
+
+                        </Grid>
+
+                    </Grid>
+
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+        
+    </Grid>
+</ContentPage>

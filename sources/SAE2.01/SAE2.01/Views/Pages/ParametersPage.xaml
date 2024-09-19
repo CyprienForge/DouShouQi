@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SAE2._01.Views.Pages.ParametersPage"
+             xmlns:vm="clr-namespace:SAE2._01.ViewModels"
+             Title="ParametersPage"
+             BackgroundColor="#f3f5de">
+
+    <!-- Styles Locaux -->
+    <ContentPage.Resources>
+
+        <!-- StackLayout qui porte la Slider -->
+        <Style TargetType="StackLayout" x:Key="SliderStack">
+            <Setter Property="BackgroundColor" Value="#282627"/>
+            <Setter Property="Padding" Value="50, 20, 50, 0"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="WidthRequest" Value="400"/>
+            <Setter Property="AbsoluteLayout.LayoutFlags" Value="PositionProportional, WidthProportional"/>
+        </Style>
+
+        <!-- Nom de la Slider -->
+        <Style TargetType="Label" x:Key="SliderNom">
+            <Setter Property="TextColor" Value="#7a715e" />
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+
+        <!-- Curseur de la Slider -->
+        <Style TargetType="Slider" x:Key="SliderBarre">
+            <Setter Property="Value" Value="0.5"/>
+            <Setter Property="Minimum" Value="0"/>
+            <Setter Property="Maximum" Value="1"/>
+            <Setter Property="MaximumTrackColor" Value="#282627"/>
+            <Setter Property="MinimumTrackColor" Value="#f3f5de"/>
+            <Setter Property="ThumbColor" Value="#7a715e"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="TextSettings">
+            <Setter Property="HeightRequest" Value="70"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="*, 3*, .5*">
+
+        <!-- Main Title -->
+        <Grid Grid.Row="0" 
+      ColumnDefinitions="auto, *, auto">
+
+            <Image Grid.Column="0"
+            Source="arbre2left.png"
+            WidthRequest="350"
+            Aspect="Fill"/>
+
+            <Image Grid.Column="1"
+           Source="doushouqilogo.png"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"
+           WidthRequest="500"
+           MinimumWidthRequest="200"/>
+
+            <Image Grid.Column="2"
+           Source="arbre2right.png"
+           WidthRequest="350"
+           Aspect="Fill"/>
+
+        </Grid>
+        <!-- -->
+
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*, 5*, *">
+
+            <Image Grid.Column="0" 
+                   Source="chinese1.png"/>
+
+            <Grid Grid.Column="1"
+                  RowDefinitions="*, 4*">
+
+                <Grid Grid.Row="0">
+
+                    <Image Style="{StaticResource ImageInk}"/>
+
+                    <Image Source="settings.png"
+                           Style="{StaticResource TextSettings}"/>
+
+                </Grid>
+
+                <Grid Grid.Row="1">
+
+                    <Grid RowDefinitions="*, *, *">
+                        
+
+                        <StackLayout Grid.Row="0" 
+                                     Style="{StaticResource SliderStack}">
+
+                            <Image Source="sound.png"
+                                   HeightRequest="50"/>
+                            <Slider Style="{StaticResource SliderBarre}"/>
+                            
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="1" 
+                                     Style="{StaticResource SliderStack}">
+
+                            <Image Source="music.png"
+                                   HeightRequest="50"/>
+                            <Slider Style="{StaticResource SliderBarre}"
+                                    Value="{Binding Volume, Mode=TwoWay}"/>
+                            
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="2" 
+                                     Style="{StaticResource SliderStack}">
+
+                            <Image Source="brightness.png"
+                                   HeightRequest="50"/>
+                            <Slider Style="{StaticResource SliderBarre}"/>
+                            
+                        </StackLayout>
+
+                    </Grid>
+                    
+                </Grid>
+
+            </Grid>
+
+
+            <Image Grid.Column="2"
+           Source="chinese2.png"/>
+
+        </Grid>
+
+        <Grid Grid.Row="2"
+      ColumnDefinitions="2*, 3*, 2*, 3*, 2*">
+
+            <Image
+           VerticalOptions="End"
+           HorizontalOptions="Start"
+           Source="arbretopleft.png"/>
+
+            <ImageButton Grid.Column="2" 
+                         Background="Transparent"
+                         Source="backarrow.png"
+                         Margin="0, 0, 0, 30"
+                         HeightRequest="70"
+                         VerticalOptions="End"
+                         HorizontalOptions="Center"
+                         x:Name="backbutton"
+                         Clicked="OnBackButtonClicked"/>
+
+            <Image Grid.Column="4"
+           VerticalOptions="End"
+           HorizontalOptions="End"
+           Source="arbretopright.png"/>
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

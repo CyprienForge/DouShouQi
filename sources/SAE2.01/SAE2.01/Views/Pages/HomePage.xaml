@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SAE2._01.Views.Pages.HomePage"
+             Title="HomePage"
+             BackgroundColor="#f3f5de">
+
+    <ContentPage.Resources>
+
+        <Style TargetType="Image" x:Key="TextHomeButton">
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="HomeButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="WidthRequest" Value="400"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="*, 3*, *">
+
+        <!-- Main Title -->
+        <Grid 
+            ColumnDefinitions="auto, *, auto"
+            Grid.Row="0" >
+
+            <Image
+                Grid.Column="0"
+                Source="arbre2left.png"
+                WidthRequest="350"
+                Aspect="Fill"/>
+
+            <Image 
+                Grid.Column="1"
+                Source="doushouqilogo.png"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="500"
+                MinimumWidthRequest="200"/>
+
+            
+            <Image
+                Grid.Column="2"
+                Source="arbre2right.png"
+                WidthRequest="350"
+                Aspect="Fill"/>
+
+        </Grid>
+        <!-- -->
+
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*, 2.5*, 5*, 2.5*, *">
+
+            <Image 
+                Grid.Column="0"
+                Source="chinese1.png"/>
+
+            <Image
+                Grid.Column="1"
+                Margin="90, 0, 0, 0"
+                x:Name="round1"
+                Source="rond.png"/>
+
+            <Grid RowDefinitions="*, *, *, *, *" 
+                  VerticalOptions="CenterAndExpand"
+                  RowSpacing="40" 
+                  Grid.Column="2" 
+                  Margin="0, 100, 0, 0">
+
+                <Image Grid.Row="0" 
+                       x:Name="playInk"
+                       Style="{StaticResource ImageInk}"/>
+
+                <Image Grid.Row="0"
+                       Source="play.png"
+                       x:Name="playButton"
+                       HeightRequest="40"
+                       Style="{StaticResource TextHomeButton}"/>
+
+                <Button Grid.Row="0"
+                        Style="{StaticResource HomeButton}"
+                        Clicked="OnPregameButtonClicked"/>
+
+                <Image Grid.Row="1"
+                       x:Name="historyInk"
+                       Style="{StaticResource ImageInk}"/>
+
+                <Image Grid.Row="1"
+                       Source="history.png"
+                       x:Name="historyButton"
+                       Style="{StaticResource TextHomeButton}"/>
+
+                <Button Grid.Row="1"
+                        Style="{StaticResource HomeButton}"
+                        Clicked="OnHistoryButtonClicked"/>
+
+                <Image Grid.Row="2"
+                       x:Name="rulesInk"
+                        Style="{StaticResource ImageInk}"/>
+
+                <Image Grid.Row="2"
+                       Source="rules.png"
+                       x:Name="rulesButton"
+                       Style="{StaticResource TextHomeButton}"/>
+
+                <Button Grid.Row="2"
+                        Style="{StaticResource HomeButton}"
+                        Clicked="OnRulesButtonClicked"/>
+
+                <Image Grid.Row="3"
+                       x:Name="settingsInk"
+                        Style="{StaticResource ImageInk}"/>
+
+                <Image Grid.Row="3"
+                       Source="settings.png"
+                       x:Name="settingsButton"
+                       Style="{StaticResource TextHomeButton}"/>
+
+                <Button Grid.Row="3"
+                        Style="{StaticResource HomeButton}"
+                        Clicked="OnSettingsButtonClicked"/>
+
+                <Image Grid.Row="4"
+                       x:Name="creditsInk"
+                        Style="{StaticResource ImageInk}"/>
+
+                <Image Grid.Row="4"
+                       Source="credits.png"
+                       x:Name="creditsButton"
+                       Style="{StaticResource TextHomeButton}"/>
+
+                <Button Grid.Row="4"
+                        Style="{StaticResource HomeButton}"
+                        Clicked="OnCreditsButtonClicked"/>
+
+            </Grid>
+
+            <Image
+                Grid.Column="3"
+                Margin="0, 0, 90, 0"
+                x:Name="round2"
+                Source="rond.png"/>
+
+            <Image 
+                Grid.Column="4"
+                Source="chinese2.png"
+                VerticalOptions="CenterAndExpand"/>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Image
+            VerticalOptions="Center"
+            HorizontalOptions="Start"
+            Source="arbretopleft.png"/>
+
+
+            <ImageButton
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                Source="cross.png"
+                WidthRequest="80"
+                x:Name="exit"
+                Clicked="OnExitButtonClicked"/>
+
+            <Image
+            VerticalOptions="Center"
+            HorizontalOptions="End"
+            Source="arbretopright.png"/>
+        </Grid>
+
+
+    </Grid>
+
+</ContentPage>

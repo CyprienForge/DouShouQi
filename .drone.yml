@@ -1,0 +1,58 @@
+kind: pipeline
+type: docker
+name: SAE2.01
+trigger:
+  event:
+    - push
+
+steps:
+  
+  - name: myBuildJob
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    commands:
+        - cd sources/SAE2.01/
+        - dotnet restore DouShouQiCI.sln
+        - dotnet build DouShouQiCI.sln -c Release --no-restore
+
+  - name: myTestJob
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    commands:
+      - cd sources/SAE2.01/
+      - dotnet restore DouShouQiCI.sln
+      - dotnet test DouShouQiCI.sln --no-restore
+    depends_on: [myBuildJob]
+
+  - name: code-inspection
+    image: hub.codefirst.iut.uca.fr/marc.chevaldonne/codefirst-dronesonarplugin-dotnet8
+    secrets: [ SECRET_SONAR_TOKEN ]
+    environment:
+      sonar_host: https://codefirst.iut.uca.fr/sonar/
+      sonar_token:
+        from_secret: SECRET_SONAR_TOKEN
+      project_key: SAE201
+      coverage_exclusions: "MyTestProject/**"
+    commands:
+      - cd sources/SAE2.01/
+      - dotnet restore DouShouQiCI.sln
+      - dotnet sonarscanner begin /k:$${project_key} /d:sonar.host.url=$${sonar_host} /d:sonar.coverageReportPaths="coveragereport/SonarQube.xml" /d:sonar.coverage.exclusions=$${coverage_exclusions} /d:sonar.login=$${sonar_token} 
+      - dotnet build DouShouQiCI.sln -c Release --no-restore
+      - dotnet test DouShouQiCI.sln --logger trx --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura --collect "XPlat Code Coverage"
+      - reportgenerator -reports:"**/coverage.cobertura.xml" -reporttypes:SonarQube -targetdir:"coveragereport"
+      - dotnet publish DouShouQiCI.sln -c Release --no-restore -o $CI_PROJECT_DIR/build/release
+      - dotnet sonarscanner end /d:sonar.login=$${sonar_token}
+    depends_on: [myBuildJob,myTestJob]
+
+  - name: generate-and-deploy-docs
+    image: hub.codefirst.iut.uca.fr/thomas.bellembois/codefirst-docdeployer
+    volumes:
+      - name: docs
+        path: /docs
+    commands:
+      - /entrypoint.sh
+    when:
+      branch:
+        - master
+      event:
+        - push
+        - pull_request
+    depends_on: [myBuildJob,myTestJob]

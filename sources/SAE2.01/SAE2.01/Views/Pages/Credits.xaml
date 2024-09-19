@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SAE2._01.Views.Pages.Credits"
+             Title="Credits"
+             BackgroundColor="#f3f5de">
+
+    <ContentPage.Resources>
+
+        <Style TargetType="Image" x:Key="TextCredits">
+            <Setter Property="HeightRequest" Value="70"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="*, 2.5*, *">
+
+        <!-- Main Title -->
+        <Grid Grid.Row="0" 
+              ColumnDefinitions="auto, *, auto">
+
+            <Image Grid.Column="0"
+                    Source="arbre2left.png"
+                    WidthRequest="350"
+                    Aspect="Fill"/>
+
+            <Image Grid.Column="1"
+                   Source="doushouqilogo.png"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   WidthRequest="500"
+                   MinimumWidthRequest="200"/>
+
+            <Image Grid.Column="2"
+                   Source="arbre2right.png"
+                   WidthRequest="350"
+                   Aspect="Fill"/>
+
+        </Grid>
+        <!-- -->
+
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*, 5*, *">
+
+            <Image Grid.Column="0" 
+                   Source="chinese1.png"/>
+
+            <Grid Grid.Column="1"
+                  RowDefinitions="*, 4*">
+
+                <Grid Grid.Row="0">
+
+                    <Image Style="{StaticResource ImageInk}"/>
+
+                    <Image Source="creators.png" 
+                           Style="{StaticResource TextCredits}"/>
+
+                </Grid>
+
+                <Grid Grid.Row="1"
+                      Margin="0, 50, 0, 0"
+                      ColumnDefinitions="3*, *, 3*">
+
+                    <Border Grid.Column="0"
+                            BackgroundColor="#323033">
+                        
+                        <Image Source="cyprien_photo.jpg"/>
+                        
+                    </Border>
+
+                    <Border Grid.Column="2"
+                            BackgroundColor="#323033">
+
+                        <Image Source="tommy.png"/>
+    
+                    </Border>
+
+                </Grid>
+                
+            </Grid>
+
+
+            <Image Grid.Column="2"
+                   Source="chinese2.png"/>
+
+        </Grid>
+
+        <Grid Grid.Row="2"
+              ColumnDefinitions="2*, 3*, 2*, 3*, 2*">
+            
+            <Image Grid.Column="0"
+                   VerticalOptions="End"
+                   HorizontalOptions="Start"
+                   Source="arbretopleft.png"/>
+
+            <Image Grid.Column="1"
+                   VerticalOptions="Start"
+                   Style="{StaticResource ImageInk}"/>
+            
+            <Image Grid.Column="1"
+                   Margin="0, 5, 0, 0"
+                   Source="forge.png"
+                   VerticalOptions="Start"
+                   Style="{StaticResource TextCredits}"/>
+
+            <ImageButton Grid.Column="2" 
+                         Background="Transparent"
+                         Source="backarrow.png"
+                         Margin="0, 0, 0, 30"
+                         HeightRequest="70"
+                         VerticalOptions="End"
+                         HorizontalOptions="Center"
+                         x:Name="backbutton"
+                         Clicked="OnBackButtonClicked"/>
+
+            <Image Grid.Column="3"
+                   VerticalOptions="Start"
+                   Style="{StaticResource ImageInk}"/>
+
+            <Image Grid.Column="3"
+                   Margin="0, 5, 0, 0"
+                   Source="nguyen.png"
+                   VerticalOptions="Start"
+                   Style="{StaticResource TextCredits}"/>
+
+            <Image Grid.Column="4"
+                   VerticalOptions="End"
+                   HorizontalOptions="End"
+                   Source="arbretopright.png"/>
+            
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
