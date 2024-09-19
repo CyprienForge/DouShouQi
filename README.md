@@ -31,7 +31,7 @@ The deliverables are actually a functional console application and a graphical u
 
 The objective of this first part is to define our application and views in XAML.
 
-* [App context](https://codefirst.iut.uca.fr/git/cyprien.forge/SAE2.01/wiki/Contexte)
+* [App context]([https://codefirst.iut.uca.fr/git/cyprien.forge/SAE2.01/wiki/Contexte](https://github.com/CyprienForge/DouShouQi/wiki/Contexte))
 * [Personas](https://codefirst.iut.uca.fr/git/cyprien.forge/SAE2.01/wiki/Personas)
 * [User stories](https://codefirst.iut.uca.fr/git/cyprien.forge/SAE2.01/wiki/Personas)
 * [Sketchs](https://codefirst.iut.uca.fr/git/cyprien.forge/SAE2.01/wiki/Sketch)
