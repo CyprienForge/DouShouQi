@@ -33,10 +33,10 @@ The objective of this first part is to define our application and views in XAML.
 
 * [App context](https://github.com/CyprienForge/DouShouQi/wiki/Contexte)
 * [Personas](https://github.com/CyprienForge/DouShouQi/wiki/Personas)
-* [User stories](https://codefirst.iut.uca.fr/git/cyprien.forge/SAE2.01/wiki/Personas)
-* [Sketchs](https://codefirst.iut.uca.fr/git/cyprien.forge/SAE2.01/wiki/Sketch)
-* [Storyboards](https://codefirst.iut.uca.fr/git/cyprien.forge/SAE2.01/wiki/Storyboard)
-* [Use Case](https://codefirst.iut.uca.fr/git/cyprien.forge/SAE2.01/wiki/Diagramme-de-cas-d%27utilisation)
+* [User stories](https://github.com/CyprienForge/DouShouQi/wiki/Personas)
+* [Sketchs](https://github.com/CyprienForge/DouShouQi/wiki/Sketch)
+* [Storyboards](https://github.com/CyprienForge/DouShouQi/wiki/Storyboard)
+* [Use Case](https://github.com/CyprienForge/DouShouQi/wiki/Diagramme-de-cas-d%2527utilisation)
 
 ### Part 2 : Conception and programming the model
 
