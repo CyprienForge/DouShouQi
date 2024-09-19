@@ -3,17 +3,12 @@
 
 # Dou Shou Qi - SAE2.01
 
-![Title](Images/DouShouQi_Title.png)
-
 ## Presentation
 
 Click on the link below to watch a video of our Dou Shou Qi game
 
 | [DouShouQi Trailer](https://opencast.dsi.uca.fr/paella/ui/watch.html?id=e553be22-2ce0-4ab7-b346-0dd5f9f4b6ac) |
 | -- |
-
-<iframe src="https://opencast.dsi.uca.fr/paella/ui/watch.html?id=e553be22-2ce0-4ab7-b346-0dd5f9f4b6ac" width="530" height="315" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen> </iframe>
-
 
 ## Context
 
@@ -42,10 +37,10 @@ The objective of this first part is to define our application and views in XAML.
 
 The purpose of this second part is to design our app by making some UML diagrams and program the operation of our application (model) in C#.
 
-* [Package diagram](https://codefirst.iut.uca.fr/git/cyprien.forge/SAE2.01/wiki/Diagramme-de-paquetage)
-* [Class diagram](https://codefirst.iut.uca.fr/git/cyprien.forge/SAE2.01/wiki/Diagramme-de-classe)
-* [Sequence diagram](https://codefirst.iut.uca.fr/git/cyprien.forge/SAE2.01/wiki/Diagramme-de-s%C3%A9quence)
-* [Architecture description](https://codefirst.iut.uca.fr/git/cyprien.forge/SAE2.01/wiki/Description-de-l%27architecture-de-l%27application)
+* [Package diagram](https://github.com/CyprienForge/DouShouQi/wiki/Diagramme-de-paquetage-avec-persistance)
+* [Class diagram](https://github.com/CyprienForge/DouShouQi/wiki/Diagramme-de-classe)
+* [Sequence diagram](https://github.com/CyprienForge/DouShouQi/wiki/Diagramme-de-s%25C3%25A9quence)
+* [Architecture description](https://github.com/CyprienForge/DouShouQi/wiki/Description-de-l%2527architecture-de-l%2527application)
 
 ### Part 3 : Link between views and model of the app
 
