@@ -3,9 +3,7 @@
 
 # Dou Shou Qi - SAE2.01
 
-<p align="center">
-  <img src="https://codefirst.iut.uca.fr/git/cyprien.forge/SAE2.01/wiki/raw/Images/DouShouQi_Title.png" alt="Dou Shou Qi">
-</p>
+![Title](Images/DouShouQi_Title.png)
 
 ## Presentation
 
